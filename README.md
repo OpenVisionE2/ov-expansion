@@ -1,3 +1,5 @@
+ov-expansion [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+============
 Time to say "Shut that hole" to some people, right? ;)
 
 Over time we heard some inexperienced people said OV is closed-source which is nonsense. They don't know how to work with OE otherwise we wouldn't be having this repo.
@@ -10,6 +12,6 @@ What you get as the result is an image with OV's enigma2 but not what we build s
 
 # How to use?
 * cd build-enviroment/meta-oe-alliance
-* clone --depth 1 https://github.com/OpenVisionE2/ov-expansion.git
+* git clone --depth 1 https://github.com/OpenVisionE2/ov-expansion.git
 * cd ov-expansion
 * ./install-ov-expansion.sh
