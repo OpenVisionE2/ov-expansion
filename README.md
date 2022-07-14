@@ -11,7 +11,13 @@ It's not our intention to support unofficial builds so do yourself a favor and u
 What you get as the result is an image with OV's enigma2 but not what we build so you're on your own. The word "unofficial" clarifies clearly what you build using this expansion is not a work of us so good luck.
 
 # How to use?
-* cd build-enviroment/meta-oe-alliance
+* git clone -b 5.1 --depth 1 https://github.com/oe-alliance/build-enviroment.git
+* cd build-enviroment
+* make update
+* cd meta-oe-alliance
 * git clone --depth 1 https://github.com/OpenVisionE2/ov-expansion.git
 * cd ov-expansion
 * ./install-ov-expansion.sh
+# Example
+Now get back to build-enviroment again and use your command with our distro
+* MACHINE=zgemmah9t DISTRO=openvision DISTRO_TYPE=release make enigma2-image
