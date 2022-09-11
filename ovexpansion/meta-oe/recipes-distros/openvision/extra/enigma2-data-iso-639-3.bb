@@ -11,9 +11,9 @@ SRC_URI = "git://github.com/OpenVisionE2/openvision-xml.git;protocol=https;branc
 
 FILES:${PN} = "${datadir}"
 
-S = "${WORKDIR}/git"
+S = "${@bb.utils.contains("PYTHON_PN", "python3", "${WORKDIR}/git/data/py3", "${WORKDIR}/git/data/py2", d)}"
 
 do_install() {
 	install -d ${D}${datadir}/enigma2
-	install -m 0644 ${S}/data/iso-639-3.pck ${D}${datadir}/enigma2/
+	install -m 0644 ${S}/iso-639-3.pck ${D}${datadir}/enigma2/
 }

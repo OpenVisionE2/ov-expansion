@@ -14,7 +14,7 @@ SRC_URI = "git://github.com/OpenVisionE2/ov-remotes.git;protocol=https;branch=ma
 FILES:${PN} = "${datadir}"
 
 S = "${WORKDIR}/git"
-SHTML = "${WORKDIR}/git/html"
+SHTML = "${WORKDIR}/git/rc"
 
 do_install() {
 	install -d ${D}${datadir}/enigma2/rc
