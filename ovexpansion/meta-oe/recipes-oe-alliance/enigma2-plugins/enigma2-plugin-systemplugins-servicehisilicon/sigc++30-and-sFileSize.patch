@@ -1,0 +1,61 @@
+diff --git a/servicehisilicon/servicehisilicon.cpp b/servicehisilicon/servicehisilicon.cpp
+index d271b3c..cba6e44 100644
+--- a/servicehisilicon/servicehisilicon.cpp
++++ b/servicehisilicon/servicehisilicon.cpp
+@@ -241,15 +241,6 @@ int eStaticServiceHisiliconInfo::getInfo(const eServiceReference &ref, int w)
+ 			}
+ 		}
+ 		break;
+-	case iServiceInformation::sFileSize:
+-		{
+-			struct stat s;
+-			if (stat(ref.path.c_str(), &s) == 0)
+-			{
+-				return s.st_size;
+-			}
+-		}
+-		break;
+ 	}
+ 	return iServiceInformation::resNA;
+ }
+@@ -902,7 +902,12 @@ void eServiceHisilicon::updateEpgCacheNowNext()
+ 
+ DEFINE_REF(eServiceHisilicon);
+ 
++#if SIGCXX_MAJOR_VERSION == 3
++RESULT eServiceHisilicon::connectEvent(const sigc::slot<void(iPlayableService*,int)> &event, ePtr<eConnection> &connection)
++#else
+ RESULT eServiceHisilicon::connectEvent(const sigc::slot2<void,iPlayableService*,int> &event, ePtr<eConnection> &connection)
++#endif
++
+ {
+ 	connection = new eConnection((iPlayableService*)this, m_event.connect(event));
+ 	return 0;
+diff --git a/servicehisilicon/servicehisilicon.h b/servicehisilicon/servicehisilicon.h
+index eb94f24..c1ace94 100644
+--- a/servicehisilicon/servicehisilicon.h
++++ b/servicehisilicon/servicehisilicon.h
+@@ -91,7 +91,11 @@ class eServiceHisilicon: public iPlayableService, public iPauseableService,
+ 	virtual ~eServiceHisilicon();
+ 
+ 		// iPlayableService
++#if SIGCXX_MAJOR_VERSION == 3
++	RESULT connectEvent(const sigc::slot<void(iPlayableService*,int)> &event, ePtr<eConnection> &connection);
++#else
+ 	RESULT connectEvent(const sigc::slot2<void,iPlayableService*,int> &event, ePtr<eConnection> &connection);
++#endif
+ 	RESULT start();
+ 	RESULT stop();
+ 
+@@ -253,7 +257,11 @@ class eServiceHisilicon: public iPlayableService, public iPauseableService,
+ 	errorInfo m_errorInfo;
+ 	std::string m_download_buffer_path;
+ 	eServiceHisilicon(eServiceReference ref);
++#if SIGCXX_MAJOR_VERSION == 3
++	sigc::signal<void(iPlayableService*,int)> m_event;
++#else
+ 	sigc::signal2<void,iPlayableService*,int> m_event;
++#endif
+ 	enum
+ 	{
+ 		stIdle, stRunning, stStopped,
