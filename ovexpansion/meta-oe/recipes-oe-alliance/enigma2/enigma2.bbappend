@@ -2,3 +2,6 @@ LIC_FILES_CHKSUM:openvision = "file://LICENSE;md5=b234ee4d69f5fce4486a80fdaf4a42
 
 RDEPENDS:${PN}:remove:openvision = "oe-alliance-branding"
 RDEPENDS:${PN}:append:openvision = " enigma2-data-iso-639-3"
+
+DEPENDS:remove:openvision = "libsigc++-2.0"
+DEPENDS:append:openvision = " libsigc++-3"
