@@ -1,1 +1,1 @@
-SRC_URI:openvision = "git://github.com/OpenVisionE2/servicehisilicon.git;protocol=https;branch=master"
+SRC_URI:openvision = "git://github.com/OpenViX/servicehisilicon.git;protocol=https;branch=sigc3"
