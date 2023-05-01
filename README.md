@@ -7,7 +7,7 @@ It's not our intention to support unofficial builds so do yourself a favor and u
 What you get as the result is an image with OV's enigma2 but not what we build so you're on your own. The word "unofficial" clarifies clearly what you build using this expansion is not a work of us.
 
 # How to use?
-* git clone -b 5.2 --depth 1 https://github.com/oe-alliance/build-enviroment.git
+* git clone -b 5.3 --depth 1 https://github.com/oe-alliance/build-enviroment.git
 * cd build-enviroment
 * make update
 * cd meta-oe-alliance
